@@ -1,265 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stratég pro svobodu od dluhů — Lead magnet</title>
-  <meta name="description" content="Stáhni zdarma 1stránkový plán: jak zastavit chaos, získat kontrolu nad dluhy a začít systematicky vyhrávat." />
-
-  <style>
-    :root{
-      --bg1:#061225;
-      --bg2:#030a14;
-      --card:#0b1c34;
-      --text:#e9f0ff;
-      --muted:#b7c7e6;
-      --green:#20b15a;
-      --green2:#14924a;
-      --line:rgba(255,255,255,.12);
-      --shadow:0 18px 60px rgba(0,0,0,.35);
-      --radius:22px;
-      --max:980px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 35% 20%, #0c2b5c 0%, var(--bg1) 35%, var(--bg2) 100%);
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:48px 20px 64px;}
-    .hero{
-      padding:56px 28px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero:before{
-      content:"";
-      position:absolute; inset:-200px -200px auto auto;
-      width:420px; height:420px;
-      background: radial-gradient(circle at 30% 30%, rgba(32,177,90,.35), rgba(32,177,90,0) 65%);
-      filter: blur(10px);
-      transform: rotate(18deg);
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.18);
-      color:var(--muted);
-      font-weight:600;
-      letter-spacing:.2px;
-      position:relative;
-      z-index:1;
-    }
-    h1{
-      margin:18px 0 10px;
-      font-size: clamp(34px, 5vw, 56px);
-      line-height:1.05;
-      letter-spacing:-.6px;
-      position:relative;
-      z-index:1;
-    }
-    .sub{
-      margin:0 0 26px;
-      font-size: clamp(16px, 2.2vw, 20px);
-      color:var(--muted);
-      line-height:1.5;
-      position:relative;
-      z-index:1;
-      max-width:60ch;
-    }
-    .ctaRow{display:flex; flex-wrap:wrap; gap:12px; align-items:center; position:relative; z-index:1;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:16px 22px;
-      border-radius:14px;
-      font-weight:800;
-      text-decoration:none;
-      border:1px solid rgba(255,255,255,.12);
-      transition:.15s transform, .15s background, .15s border;
-      min-width:220px;
-    }
-    .btnPrimary{
-      background: linear-gradient(180deg, var(--green), var(--green2));
-      border-color: rgba(32,177,90,.55);
-      color:#061225;
-    }
-    .btnPrimary:hover{transform: translateY(-1px);}
-    .btnGhost{
-      background:rgba(0,0,0,.18);
-      color:var(--text);
-    }
-    .btnGhost:hover{border-color: rgba(255,255,255,.22); transform: translateY(-1px);}
-    .fine{
-      margin-top:14px;
-      color:rgba(233,240,255,.75);
-      font-size:13px;
-      line-height:1.45;
-      position:relative;
-      z-index:1;
-    }
-    .grid{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-    }
-    @media (max-width: 860px){
-      .grid{grid-template-columns:1fr;}
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: rgba(255,255,255,.04);
-      padding:22px;
-    }
-    .card h2{margin:0 0 12px; font-size:20px;}
-    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.6;}
-    .list li{margin:8px 0;}
-    .kpi{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 560px){ .kpi{grid-template-columns:1fr;} }
-    .pill{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px 14px;
-      background: rgba(0,0,0,.16);
-    }
-    .pill .top{font-weight:900; font-size:14px;}
-    .pill .bot{color:var(--muted); font-size:13px; margin-top:4px; line-height:1.35;}
-    .sectionTitle{
-      margin:34px 0 12px;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-    .faq{display:grid; gap:12px;}
-    details{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px 14px;
-      background: rgba(255,255,255,.03);
-    }
-    summary{cursor:pointer; font-weight:800;}
-    details p{color:var(--muted); margin:10px 0 0; line-height:1.55;}
-    footer{
-      margin-top:26px;
-      color:rgba(233,240,255,.65);
-      font-size:12px;
-      line-height:1.5;
-      text-align:center;
-    }
-    .divider{
-      height:1px;
-      background: var(--line);
-      margin:22px 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strateg pro svobodu od dluhů</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1b34;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    text-align: center;
+    max-width: 600px;
+}
+h1 {
+    font-size: 40px;
+}
+p {
+    color: #b8c7e0;
+}
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.primary {
+    background: #2ecc71;
+    color: black;
+}
+.secondary {
+    background: #1e2f55;
+    color: white;
+    margin-left: 10px;
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
+<div class="container">
+<h1>Strateg pro svobodu od dluhů</h1>
+<p>Jednostránkový systém, který ti dá kontrolu nad dluhem během 10 minut.</p>
 
-    <section class="hero">
-      <div class="badge">Lead magnet zdarma • 1 stránka • 10 minut</div>
+<a class="btn primary"
+   href="https://TVUJ-GUMROAD-LINK"
+   target="_blank">
+   Koupit a stáhnout (PDF)
+</a>
 
-      <h1>Stratég pro svobodu od dluhů</h1>
-      <p class="sub">
-        Stáhni si zdarma <strong>1stránkový plán</strong>, který ti pomůže:
-        <strong>zastavit chaos</strong>, <strong>získat kontrolu</strong> a začít dluhy
-        řešit systémově – bez pocitu, že se topíš.
-      </p>
+<a class="btn secondary"
+   href="https://calendly.com/batko-digital-ai"
+   target="_blank">
+   Rezervovat konzultaci
+</a>
 
-      <div class="ctaRow">
-        <!-- 1) Sem dej svůj Gumroad odkaz na free lead magnet -->
-        <a class="btn btnPrimary" href="GUMROAD_LEAD_MAGNET_LINK" target="_blank" rel="noopener">
-          Stáhnout zdarma (PDF)
-        </a>
-
-        <!-- 2) Tohle je sekundární CTA -->
-        <a class="btn btnGhost" href="https://calendly.com/batko-digital-ai" target="_blank" rel="noopener">
-          Rezervovat konzultaci
-        </a>
-      </div>
-
-      <div class="fine">
-        Tip: Pokud chceš jen rychle začít, stáhni PDF. Pokud chceš řešení „s někým“, rezervuj konzultaci.
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>Co v PDF dostaneš</h2>
-          <ul class="list">
-            <li><strong>STOP-chaos krok</strong> (co dělat dnes, aby se to nezhoršovalo)</li>
-            <li><strong>Mapa dluhů</strong> (jednoduchá tabulka a pořadí, co řešit první)</li>
-            <li><strong>3 pravidla kontroly</strong> (aby ses nikdy nevrátil do stejné pasti)</li>
-            <li><strong>Minimální týdenní systém</strong> (10 minut týdně, žádná “motivace”)</li>
-          </ul>
-          <div class="divider"></div>
-          <div class="kpi">
-            <div class="pill">
-              <div class="top">10 minut</div>
-              <div class="bot">vyplnění a první úleva</div>
-            </div>
-            <div class="pill">
-              <div class="top">1 stránka</div>
-              <div class="bot">žádná omáčka, jen akce</div>
-            </div>
-            <div class="pill">
-              <div class="top">Okamžitě</div>
-              <div class="bot">po stažení víš, co dělat</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2>Pro koho to je</h2>
-          <ul class="list">
-            <li>Máš dluhy / splátky a <strong>nechceš žít v mlze</strong>.</li>
-            <li>Potřebuješ <strong>jeden systém</strong>, ne 50 rad z internetu.</li>
-            <li>Chceš mít <strong>kontrolu</strong> a postup, který se dá udržet.</li>
-          </ul>
-          <div class="divider"></div>
-          <h2>Co to není</h2>
-          <ul class="list">
-            <li>Není to “motivace”.</li>
-            <li>Není to právní/finanční poradenství na míru.</li>
-            <li>Je to <strong>praktický start</strong> + rámec kontroly.</li>
-          </ul>
-        </div>
-      </div>
-
-      <h3 class="sectionTitle">FAQ</h3>
-      <div class="faq">
-        <details>
-          <summary>Jak získám PDF?</summary>
-          <p>Otevřeš “Stáhnout zdarma” → Gumroad ti pošle PDF (a zároveň si uloží e-mail pro další kroky).</p>
-        </details>
-        <details>
-          <summary>Proč je tu i konzultace?</summary>
-          <p>PDF je rychlý start. Konzultace je pro lidi, kteří chtějí postup poskládat na svou situaci a mít jasné pořadí kroků.</p>
-        </details>
-        <details>
-          <summary>Co mám udělat jako úplně první krok?</summary>
-          <p>Stáhni PDF a udělej jen první část (STOP-chaos). To je nejrychlejší bod obratu.</p>
-        </details>
-      </div>
-
-      <footer>
-        © batko.digital.ai • Tento web slouží k informování a sběru kontaktů. Nejedná se o právní ani finanční poradenství.
-      </footer>
-    </section>
-
-  </main>
+</div>
 </body>
 </html>
